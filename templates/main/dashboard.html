@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <script src ="/services/refreshRatioJob.js"></script>
+  
+    <meta charset="UTF-8">
+    <title>CryptoCoins</title>
+    <link rel="stylesheet" href="../../static/css/main/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./icons8-user-90.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script type="module" src="../../static/js/main/dashboard.js"></script>
+</head>
+ 
+<body>
+  
+  <div class="sidebar">
+
+    <div class="logo-details">
+      <i class='bx bx-coin-stack icon'></i>
+      <div class="logo_name">CryptoCoins</div>
+      <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <hr class="subtire"> 
+
+    <ul class="nav-list">
+
+      <li>
+        <a href="#" class="profile" id="dash">
+          <i class='bx bx-home-alt'></i>
+          <span class="links_name" id="sidebar_first">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      
+      <li>
+        <a href="#" class="comments" id="myApplications">
+          <i class='bx bx-folder-open'></i>
+          <span class="links_name">My Portfolio</span>
+        </a>
+        <span class="tooltip">My Portfolio</span>
+      </li>
+      
+      <li>
+        <a href="#" class="comments" id="notifications">
+          <div id="notificationBadge" class="notification-badge">3</div>
+          <i class='bx bx-user'></i>
+          <span class="links_name">User Administration</span>
+        </a>
+        <span class="tooltip">User Administration</span>
+      </li>
+      
+      <li>
+        <a href="#" class="history" id="history">
+          <i class='bx bx-book'></i>
+          <span class="links_name">Journaling</span>
+        </a>
+        <span class="tooltip">Journaling</span>
+      </li>
+
+     <li class="logoutClass" id="logout">
+      <a href="#" id="log_out_back">
+         <i class='bx bx-log-out' id="log_out" ></i>
+      </a>
+     </li>
+
+    </ul>
+  </div>
+   
+<!-- DASHBOARD SECTION -->
+  <section class="home-section">
+    <div class="grey-bg container-fluid p-2" id="dashh">
+        <section id="minimal-statistics">
+
+          <div class="row">
+            <div class="col-12 mt-0 mb-1">
+              <h4 class="text-uppercase">dashboard</h4>
+            </div>
+          </div>
+
+          <div class="linie">
+            <div class="search">
+              <input type="text" placeholder="Search Coin" >
+              <button><i class="fas fa-search"></i></button>
+            </div>
+          
+          </div>
+
+        <div class="card-container" id="cards">
+          <div class="card" id="card" hidden>
+              <div class="card-image">
+                  <img src="../../static/images/main/applications/background.jpg" >
+              </div>
+              <div class="card-content2">
+                <div class="card-content">
+                  <p id="Name">Bitcoin</p>
+                  <p id="Genre">RON 6.384.948</p>
+                </div>
+                  <div class="card-content">
+                      <p id="free" class="free">USER</p>
+                  </div>
+                  <button class="reportBug" id="buyCoin">Buy</button>
+          </div>
+        </div>
+
+              
+        </div>
+
+          
+
+        
+
+<!--BUY COIN popup-->
+<div id="buyCoinPopup" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeBuy" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">BUY <span id="coinTitle">Bitcoin</span></p>
+                </div>
+
+                <p>Current value: RON <span id="coinValue" style="color: rgb(5, 206, 5);">6.384.948</span></p>
+
+	        <div class="formbold-mb-5">
+	          <label for="number" class="formbold-form-label">
+	            Enter the amount: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="courseTitle"
+	            type="number"
+	            name="title"
+	            id="applicationTitle"
+	            placeholder="Enter amount"
+	            class="formbold-form-input" required
+	          />
+	        </div>  
+
+          <p> Impozit: <span id="impozit" style="color: rgb(5, 206, 5);">0.2%</span></p>
+
+          <div class="formbold-mb-5">
+            <label for="number" class="formbold-form-label">
+              Total price to pay: <span class="required"> *</span>
+            </label>
+            <textarea
+              formControlName="courseTitle"
+              type="text"
+              name="title"
+              id="applicationTitle"
+              placeholder="1000.00 RON"
+              class="formbold-form-input" required readonly
+            >1000.00 RON</textarea>
+          
+          <p style="margin-top: 20px;">Your balance: <span id="balance" style="color: rgb(5, 206, 5);">33.292</span> RON</p>
+
+          
+
+
+	          <div>
+	            <button class="formbold-btn w-full" id="addApplicationBtn" style="margin-top: 20px;">
+	              Buy
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+    </div>
+
+    </section>
+</div>
+</section>
+
+
+
+<!-- MY PORTFOLIO SECTION -->
+  <section class="myapp-section">
+    <div class="grey-bg container-fluid p-2" id="dashh">
+      <section id="minimal-statistics">
+
+        <div class="row">
+          <div class="col-12 mt-0 mb-1">
+            <h4 class="text-uppercase">my portfolio</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 col-12">
+          <div class="wallet">
+            <div class="title">
+              <span>
+                <svg width="20" fill="currentColor" height="20" width="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
+                    </path>
+                </svg>
+            </span>
+                <p class="title-text">
+                    Your Wallet
+                </p>
+            </div>
+            <div class="data">
+              <h5>
+                Balance
+              </h5>
+                <p>
+                  <span id="sold">39,500</span>
+                </p>
+                
+                <div class="range">
+                    <div class="fill">
+                    </div>
+                </div>
+            </div>
+            <div class="card-content3" style="margin-top: 10px;">
+              <button class="reportBug" style="color: blue;" id="addLei">Add</button>
+              <button class="reportBug" style="color: red;" id="retrageLei">Withdraw</button>
+          </div>
+
+          </div>
+        </div>
+
+        <script>
+
+            fetch('https://localhost:7115/api/Sold/GetSold?IdUser=6')
+              .then(response => response.text()) 
+              .then(data => {
+                document.getElementById('sold').textContent = formatCurrency(parseFloat(data)); 
+              })
+              .catch(error => console.error('Error fetching data:', error));
+
+            function formatCurrency(amount) {
+              return new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'RON' }).format(amount);
+            }
+
+
+            $(document).ready(function() {
+
+
+    function updateSold(idUser, amount) {
+        const data = {
+            idUser: idUser,
+            amount: amount 
+        };
+
+        $.ajax({
+            url: 'https://localhost:7115/api/Sold/UpdateSold',
+            method: 'PATCH',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+    
+                fetch('https://localhost:7115/api/Sold/GetSold?IdUser=' + idUser)
+                    .then(response => response.text()) 
+                    .then(data => {
+                        $('#sold').text(formatCurrency(parseFloat(data))); 
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            },
+            error: function(xhr, status, error) {
+                console.error('Error updating sold:', error);
+            }
+        });
+    }
+
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'RON' }).format(amount);
+    }
+
+    $('#addRonBtn').click(function() {
+      
+        const inputValue = parseFloat($('#addRonCamp').val()); 
+        const userId = 6; 
+        if (!isNaN(inputValue)) {
+            updateSold(userId, inputValue);
+            $('#addLeiModal').hide(); 
+        } else {
+            alert("Please enter a valid amount."); 
+        }
+    });
+
+
+    $('#withdrawBtn').click(function() {
+        const withdrawValue = parseFloat($('#withdrawValue').val()); 
+        const userId = 6; 
+        if (!isNaN(withdrawValue)) {
+            const withdrawAmount = -Math.abs(withdrawValue); 
+            updateSold(userId, withdrawAmount);
+            $('#retrageLeiModal').hide(); 
+        } else {
+            alert("Please enter a valid amount."); 
+        }
+    });
+
+
+
+
+
+        // Funcția pentru adăugarea unei monede
+        function addCoin(criptoName, ratio, pictureLink, idUser) {
+        const data = {
+            criptoName: criptoName,
+            ratio: ratio,
+            pictureLink: pictureLink,
+            idUser: idUser
+        };
+
+        $.ajax({
+            url: 'https://localhost:7115/api/Currency/Add_Currency',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+                alert("Coin added successfully!"); // Afiseaza un mesaj de succes
+                // Poți să faci alte acțiuni după ce moneda este adăugată cu succes
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error adding coin:', error);
+                alert("Error adding coin. Please try again later."); // Afiseaza un mesaj de eroare
+            }
+        });
+    }
+
+    // Evenimentul de click pentru butonul de adăugare a monedei
+    $('#addCoin').click(function() {
+        const criptoName = $('#nameCoin').val(); // Ia numele monedei
+        const ratio = parseFloat($('#ratioCoin').val()); // Ia raportul monedei
+        const pictureLink = $('#applicationImage').val(); // Ia link-ul imaginii monedei (poți ajusta pentru a lua doar numele fișierului)
+        const idUser = 6; // Presupunând că userId-ul este 6
+        if (criptoName && ratio && pictureLink) {
+            addCoin(criptoName, ratio, pictureLink, idUser); // Adaugă moneda folosind funcția addCoin
+            $('#addSendModal').hide(); // Ascunde modalul după ce moneda este adăugată cu succes
+
+
+        } else {
+            alert("Please fill in all the required fields."); // Afiseaza un mesaj de eroare dacă nu sunt completate toate câmpurile necesare
+        }
+        
+    });
+
+
+    function populateCards() {
+        $.ajax({
+            url: 'https://localhost:7115/api/Currency/Get_currency',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Parsare răspuns și creare carduri pentru fiecare monedă
+                response.forEach(function(cripto) {
+                    var cardHtml = `
+                        <div class="card" id="card_${cripto.idCripto}">
+                            <div class="card-image">
+                                <img src="../../static/images/main/applications/background.jpg" >
+                            </div>
+                            <div class="card-content2">
+                                <div class="card-content">
+                                    <p id="Name">${cripto.criptoName}</p>
+                                    <p id="Genre">RON ${cripto.price}</p>
+                                </div>
+                                <div class="card-content">
+                                    <p id="free" class="free">${cripto.userName ? cripto.userName : 'NULL'}</p>
+                                </div>
+                                <button class="reportBug buyCoinBtn">Buy</button>
+                            </div>
+                        </div>
+                    `;
+                    $('#cards').append(cardHtml); // Adaugă cardul la containerul de carduri
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching currency data:', error);
+            }
+        });
+    }
+
+    // Apelarea funcției pentru a popula cardurile când pagina este gata de afișare
+    populateCards();
+
+
+// Eveniment de tastatură pentru căutare
+$('.search input').on('input', function() {
+        var searchValue = $(this).val().toLowerCase(); // Ia valoarea introdusă în câmpul de căutare și o converteste la litere mici
+        $('.card').each(function() {
+            var criptoName = $(this).find('#Name').text().toLowerCase(); // Ia numele monedei din fiecare card și îl converteste la litere mici
+            if (criptoName.indexOf(searchValue) !== -1) { // Verifică dacă numele monedei conține valoarea introdusă în câmpul de căutare
+                $(this).show(); // Afișează cardul dacă numele monedei se potrivește cu căutarea
+            } else {
+                $(this).hide(); // Ascunde cardul dacă numele monedei nu se potrivește cu căutarea
+            }
+        });
+    });
+
+
+
+
+       // Funcția pentru a obține monedele și a popula cardurile pentru utilizatorul cu idUser=6
+       function populateMyApplicationsCards() {
+
+
+        $.ajax({
+            url: 'https://localhost:7115/api/Currency/Get_currency',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Filtrare monede pentru utilizatorul cu idUser=6
+                var userCoins = response.filter(function(cripto) {
+                    return cripto.idUser === 6;
+                });
+
+                // Parsare răspuns și creare carduri pentru fiecare monedă a utilizatorului cu idUser=6
+                userCoins.forEach(function(cripto) {
+                    var cardHtml = `
+                        <div class="card" id="myApplicationsCard_${cripto.idCripto}">
+                            <div class="card-image">
+                                <img src="../../static/images/main/applications/background.jpg" >
+                            </div>
+                            <div class="card-content2">
+                                <div class="card-content">
+                                    <p id="Name">${cripto.criptoName}</p>
+                                    <p id="value">RON ${cripto.price}</p>
+                                </div>
+                                <div class="card-content">
+                                    <p id="Genre" style="color: #5237d9">0.024 COINS</p>
+                                    <p id="Genre" style="color: #5237d9">RON 18.920</p>
+                                </div>
+                                <div class="card-content">
+                                    <p id="free" class="free">${cripto.userName ? cripto.userName : 'USER1'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('#myApplicationsCards').append(cardHtml); // Adaugă cardul la containerul de carduri
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching currency data:', error);
+            }
+        });
+    }
+
+    // Funcție pentru a ordona cardurile în funcție de opțiunea selectată
+    function onFilterEndpoints(event) {
+        var filterValue = $(event.target).val(); // Ia valoarea selectată din meniul dropdown
+        var $cardsContainer = $('#myApplicationsCards');
+
+        // Sortează cardurile în funcție de opțiunea selectată
+        switch (filterValue) {
+            case '0': // RANDOM
+                var cards = $cardsContainer.children('.card').toArray();
+                shuffleArray(cards);
+                $cardsContainer.empty().append(cards);
+                break;
+            case '1': // ALPHABETIC
+                $cardsContainer.children('.card').sort(function(a, b) {
+                    return $(a).find('#Name').text().localeCompare($(b).find('#Name').text());
+                }).appendTo($cardsContainer);
+                break;
+        }
+    }
+
+    // Funcție pentru a amesteca un array
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
+    // Apelarea funcției pentru a popula cardurile când pagina este gata de afișare
+    populateMyApplicationsCards();
+
+    // Adăugarea unui eveniment de schimbare pentru meniul dropdown
+    $('#filterEndpoints').change(onFilterEndpoints);
+
+
+    var apiUrl = 'https://localhost:7115/api/Currency/Get_currency';
+
+    // Realizăm solicitarea GET către URL
+    $.get(apiUrl, function(data) {
+        // Iterăm prin fiecare element din răspunsul JSON
+        data.forEach(function(cripto) {
+            // Adăugăm fiecare cripto-name ca opțiune la select
+            $('#coinsSelect').append($('<option>', {
+                value: cripto.idCripto, // Valorile sunt id-urile cripto-name-urilor
+                text: cripto.criptoName // Textul este numele cripto-name-urilor
+            }));
+        });
+    });
+
+
+     // Eveniment de click pentru butonul de vânzare din popup
+     $('#sellCoinBtn').click(function() {
+        var idCripto = $('#coinsSelect').val(); // Ia valoarea selectată pentru moneda
+        var idUser = 6; // Id-ul utilizatorului poate fi setat direct
+        var date = new Date().toLocaleDateString('en-GB'); // Ia data curentă în formatul DD/MM/YYYY
+        var sumaLei = $('#sellamount').val(); // Ia suma introdusă în input
+        var transactionType = 'sell'; // Tipul tranzacției este de vânzare
+
+        // Creare obiect de date pentru a fi trimis în solicitarea către endpoint
+        var requestData = {
+            idCripto: parseInt(idCripto),
+            idUser: idUser,
+            date: date,
+            sumaLei: parseInt(sumaLei),
+            transactionType: transactionType
+        };
+
+        // Solicitare către endpoint-ul Make_transaction
+        $.ajax({
+            url: 'https://localhost:7115/api/Currency/Make_transaction',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function(response) {
+                // Răspunsul de la endpoint (dacă este necesar)
+                console.log('Transaction successful:', response);
+                // Aici puteți adăuga orice alte acțiuni necesare după vânzare, cum ar fi actualizarea afișării soldului, etc.
+                alert("Transaction successful!");
+                $('#sellCoinPopup').hide();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error making transaction:', error);
+            }
+        });
+    });
+
+    // Face o cerere GET către endpoint-ul furnizat pentru monede
+$.get('https://localhost:7115/api/Currency/Get_currency', function(data) {
+  // Creează un obiect pentru a mapa id-urile de criptovalută la numele lor corespunzător
+  var coinNames = {};
+  // Iterează prin fiecare monedă și stochează numele în obiectul coinNames
+  data.forEach(function(coin) {
+    coinNames[coin.idCripto] = coin.criptoName;
+  });
+
+  // Face o altă cerere GET către endpoint-ul pentru tranzacții ale utilizatorului
+  $.get('https://localhost:7115/api/usertransactions?IdUser=6', function(transactions) {
+    // Iterează prin fiecare tranzacție și adaugă un rând în tabel pentru fiecare
+    transactions.forEach(function(transaction) {
+      // Obține numele monedei folosind id-ul criptovalutei din tranzacție
+      var coinName = coinNames[transaction.idCripto] || 'Unknown';
+
+      // Crează un rând pentru tranzacție cu numele monedei în loc de id-ul criptovalutei
+      var rowHtml = `
+        <tr>
+          <td>${coinName}</td>
+          <td>${transaction.quantity}</td>
+          <td>${transaction.sumaLei}</td>
+          <td>${transaction.impozit}</td>
+          <td>${transaction.date}</td>
+          <td>${transaction.sumaLei}</td>
+        </tr>
+      `;
+
+      // Adaugă rândul în tabel
+      $('#employee_table tbody').append(rowHtml);
+    });
+  });
+});
+
+
+
+// Face o cerere GET către endpoint-ul furnizat pentru totalul impozitelor
+$.get('https://localhost:7115/api/Impozit/totalImpozit', function(data) {
+  // Actualizează valoarea din span cu id-ul "profitLabel" cu valoarea din răspunsul endpoint-ului
+  $('#profitLabel').text(data);
+});
+
+// Face o cerere GET către endpoint-ul furnizat pentru detalii despre utilizatori
+$.get('https://localhost:7115/api/UserDetails', function(data) {
+  // Iterează prin fiecare obiect din răspunsul endpoint-ului
+  data.forEach(function(user) {
+    // Creează un nou rând pentru tabel
+    var row = $('<tr>');
+    // Adaugă celule pentru fiecare câmp din obiectul utilizatorului
+    row.append($('<td>').text(user.lastName));
+    row.append($('<td>').text(user.firstName));
+    row.append($('<td>').text(user.email));
+    row.append($('<td>').text(user.role === 1 ? 'User' : 'Admin')); // Afișează rolul utilizatorului
+    row.append($('<td>').text(user.sold.toFixed(2))); // Afișează soldul utilizatorului cu două zecimale
+    // Adaugă rândul la tabel
+    $('#employee_table2 tbody').append(row);
+  });
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+          </script>
+        
+        </div>
+
+
+        <div class="linie">
+          <div class="card-content3">
+          <div class="search">
+            <input placeholder="Search Your Coin" oninput="searchMyApplicationsCards(event)">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <select id="filterEndpoints" class="addAppButton" onchange="onFilterEndpoints(event)">
+            <option value="0">RANDOM</option>
+            <option value="1">ALPHABETIC</option>
+          </select>
+        </div>
+          <div class="auth">
+            <button class="addAppButton" id="sellCoin"><i class="fas fa-money-bill" style="margin-right: 5px;"></i>Sell a coin</button>
+            <button class="addAppButton" id="addSend"><i class="fas fa-plus" style="margin-right: 5px;"></i>Add a coin</button>
+          </div>
+        </div>
+      
+  
+      <div class="card-container" id="myApplicationsCards">
+        <div class="card" id="myApplicationsCard" hidden>
+            <div class="card-image">
+                <img src="../../static/images/main/applications/background.jpg" >
+            </div>
+            <div class="card-content2">
+              <div class="card-content">
+                <p id="Genre">Bitcoin</p>
+                <p id="VALUE">RON 6.384.948</p>
+              </div>
+
+              <div class="card-content">
+                <p id="Genre" style="color: #5237d9">0.024 COINS</p>
+                <p id="Genre" style="color: #5237d9">RON 18.920</p>
+              </div>
+                <div class="card-content">
+                    <p id="free" class="free">USER1</p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="header">
+        <div class="col-sm-6">
+            <h2 class="tabel-titlu">View <b>your transactions</b></h2>
+        </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table" id="employee_table">
+            <thead>
+                <tr id="tr">
+                    <th>Coin</th>
+                    <th>Quantity</th>
+                    <th>Coin value</th>
+                    <th>Impozit</th>
+                    <th>Date</th>
+                    <th>Total value</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Bitcoin</td>
+                  <td>0.089</td>
+                  <td>6.289.899</td>
+                  <td>0.2%</td>
+                  <td>20/10/2024</td>
+                  <td>56.980</td>
+                </tr>
+
+              </tbody>
+        </table>
+      </div>   
+
+
+<!--ADD A COIN popup-->
+<div id="addSendModal" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeButton2" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">ADD A COIN</p>
+
+                </div>
+
+	        <div class="formbold-mb-5">
+	          <label for="email" class="formbold-form-label">
+	            Enter the name: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="courseTitle"
+	            type="title"
+	            name="title"
+	            id="nameCoin"
+	            placeholder="Enter name for coin"
+	            class="formbold-form-input" required
+	          />
+	        </div>
+	
+	        <div class="formbold-mb-5">
+	          <label for="description" class="formbold-form-label">
+	            Enter the ratio: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="description"
+	            name="description"
+	            id="ratioCoin"
+	            placeholder="Enter ratio for coin"
+	            class="formbold-form-input" required
+	          />
+	        </div>
+	
+	
+	        <div class="mb-0 pt-0">
+	          <label class="formbold-form-label formbold-form-label-2">
+	            Upload picture <span class="required"> *</span>
+	          </label>
+	
+            <input type="file" name="file" id="applicationImage" required />
+
+	          <div>
+	            <button class="formbold-btn w-full" id="addCoin" style="margin-top: 20px;">
+	              Add coin
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
+
+
+<!--ADD lei popup-->
+<div id="addLeiModal" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeButtonLei" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">ADD RON</p>
+
+                </div>
+
+	        <div class="formbold-mb-5">
+	          <label for="number" class="formbold-form-label">
+	            Enter the value: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="courseTitle"
+	            type="number"
+	            name="title"
+	            id="addRonCamp"
+	            placeholder="Enter ron"
+	            class="formbold-form-input" required
+	          />
+	        </div>   
+
+	          <div>
+	            <button class="formbold-btn w-full" id="addRonBtn" style="margin-top: 20px; color: blue;">
+	              Add
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<!--SELL COIN popup-->
+<div id="sellCoinPopup" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeSellCoin" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">SELL COIN</p>
+
+                </div>
+
+                <div class="formbold-mb-5">
+                  <label for="number" class="formbold-form-label">
+                    Choose coin: <span class="required"> *</span>
+                  </label>
+                  <select id="coinsSelect" class="formbold-form-input" >
+                    <option value="0">BTC</option>
+                    <option value="1">ETH</option>
+                  </select>
+                </div>
+
+	        <div class="formbold-mb-5">
+	          <label for="number" class="formbold-form-label">
+	            Enter the amount in ron: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="courseTitle"
+	            type="number"
+	            name="title"
+	            id="sellamount"
+	            placeholder="Enter amount"
+	            class="formbold-form-input" required
+	          />
+	        </div>   
+
+	          <div>
+	            <button class="formbold-btn w-full" id="sellCoinBtn" style="margin-top: 20px; color: blue;">
+	              Sell
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<!--withdraw lei popup-->
+<div id="retrageLeiModal" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeButtonLei2" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">WITHDRAW RON</p>
+
+                </div>
+
+	        <div class="formbold-mb-5">
+	          <label for="number" class="formbold-form-label">
+	            Enter the value: <span class="required"> *</span>
+	          </label>
+	          <input
+	            formControlName="courseTitle"
+	            type="number"
+	            name="title"
+	            id="withdrawValue"
+	            placeholder="Enter ron"
+	            class="formbold-form-input" required
+	          />
+	        </div>   
+
+	          <div>
+	            <button class="formbold-btn w-full" id="withdrawBtn" style="margin-top: 20px; color: red;">
+	              Withdraw
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
+
+        
+    </div>
+
+
+  </section>
+
+  <!--
+  <section class="editEndpoints">
+    <div class="grey-bg container-fluid p-2" id="dashh">
+      <section>
+        
+      <div class="linie2">
+        <div class="modal-header2">
+          <p id="headline">MANAGE ENDPOINTS</p>        
+
+          <div class="auth">
+            <div class="linie">
+          <button class="addAppButton" id="addEndpoint" style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right: 5px;"></i>Add endpoint</button>
+          <select id="filterEndpoints" class="addAppButton" onchange="onFilterEndpoints(event)">
+            <option value="0">ALL</option>
+            <option value="1">STABLE</option>
+            <option value="2">UNSTABLE</option>
+            <option value="3">DOWN</option>
+          </select>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="endpointsWrapper"></div>
+
+    <div class="method" id="getEndpoint" hidden>
+        <h2 class="get"><i class="fas fa-arrow-alt-circle-right"></i> GET</h2>
+        <div class="operation">
+          <div class="linie">
+            <span></span>
+              <div class="circle2" style="background: green;">
+                <span class="number">Stable</span>
+              </div>
+          </div>
+          <ul>
+              <li>URL: /api/resource</li>
+              <li>Parameters: None</li>
+              <li>Date created: 10/10/2023</li>
+          </ul>
+          <button class="view-statistics" id="viewStatisticsBtn">View statistics</button>
+          <button class="view-statistics" id="viewHistory" onclick="showHistory()">History</button>
+          <button class="delete-button" id="deleteEndpointBtn" onclick="deleteEndpointModal()">Delete</button>
+          <button class="delete-button" id="reportEndpoint">Report</button>
+        </div>
+    </div>
+    <div class="method" id="postEndpoint" hidden>
+        <h2 class="post"><i class="fas fa-plus-circle"></i> POST</h2>
+        <div class="operation">
+          <div class="linie">
+            <span></span>
+            <div class="circle2" style="background: green;">
+                <span class="number">Stable</span>
+                </div>
+          </div>
+            <ul>
+                <li>URL: /api/resource</li>
+                <li>Parameters: JSON data</li>
+                <li>Date created: 10/10/2023</li>
+            </ul>
+            <button class="view-statistics" id="viewStatisticsBtn">View statistics</button>
+            <button class="view-statistics" id="viewHistory" onclick="showHistory()">History</button>
+            <button class="delete-button" id="deleteEndpointBtn" onclick="deleteEndpointModal()">Delete</button>
+            <button class="delete-button" id="reportEndpoint">Report</button>
+        </div>
+    </div>
+    <div class="method" id="putEndpoint" hidden>
+        <h2 class="put"><i class="fas fa-pen-alt"></i> PUT</h2>
+        <div class="operation">
+          <div class="linie">
+            <span></span>
+            <div class="circle2" style="background: green;">
+                <span class="number">Stable</span>
+                </div>
+          </div>
+            <ul>
+                <li>URL: /api/resource/{id}</li>
+                <li>Parameters: JSON data, resource ID</li>
+                <li>Date created: 10/10/2023</li>
+            </ul>
+            <button class="view-statistics" id="viewStatisticsBtn">View statistics</button>
+            <button class="view-statistics" id="viewHistory" onclick="showHistory()">History</button>
+            <button class="delete-button" id="deleteEndpointBtn" onclick="deleteEndpointModal()">Delete</button>
+            <button class="delete-button" id="reportEndpoint">Report</button>
+        </div>
+    </div>
+    <div class="method" id="patchEndpoint" hidden>
+    <h2 class="patch"><i class="fas fa-pen-alt"></i> PATCH</h2>
+    <div class="operation">
+      <div class="linie">
+        <span></span>
+        <div class="circle2" style="background: green;">
+            <span class="number">Stable</span>
+            </div>
+      </div>
+        <ul>
+            <li>URL: /api/resource/{id}</li>
+            <li>Parameters: JSON data, resource ID</li>
+            <li>Date created: 10/10/2023</li>
+        </ul>
+        <button class="view-statistics" id="viewStatisticsBtn">View statistics</button>
+        <button class="view-statistics" id="viewHistory" onclick="showHistory()">History</button>
+        <button class="delete-button" id="deleteEndpointBtn" onclick="deleteEndpointModal()">Delete</button>
+        <button class="delete-button" id="reportEndpoint">Report</button>
+    </div>
+    <div class="method" id="deleteEndpoint" hidden>
+      <h2 class="delete"><i class="fas fa-trash-alt"></i> DELETE</h2>
+      <div class="operation">
+        <div class="linie">
+          <span></span>
+          <div class="circle2" style="background: green;">
+              <span class="number">Stable</span>
+          </div>
+        </div>
+        <ul>
+            <li>URL: /api/resource/{id}</li>
+            <li>Parameters: Resource ID</li>
+            <li>Date created: 10/10/2023</li>
+        </ul>
+        <button class="view-statistics" id="viewStatisticsBtn">View statistics</button>
+        <button class="view-statistics" id="viewHistory" onclick="showHistory()">History</button>
+        <button class="delete-button" id="deleteEndpointBtn" onclick="deleteEndpointModal()">Delete</button>
+        <button class="delete-button" id="reportEndpoint">Report</button>
+      </div>
+    </div>
+      
+      </section>
+  </div>
+  </section>
+
+ 
+<div id="addEndpointModal" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button onclick="closeEndpointModal()" type="button" class="close" aria-hidden="true">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">ADD AN ENDPOINT</p>
+
+                </div>
+	        <div class="formbold-mb-5">
+	          <label for="email" class="formbold-form-label">
+	            Enter the url: <span class="required"> *</span>
+	          </label>
+	          <input
+	            type="title"
+	            name="url"
+	            id="endpointUrl"
+	            placeholder="Enter url for endpoint"
+	            class="formbold-form-input" required
+	          />
+	        </div>
+	
+	        <div class="formbold-mb-5">
+	          <label for="description" class="formbold-form-label">
+	            Select type: <span class="required"> *</span>
+	          </label>
+            <select name="description" id="endpointType" formControlName="description" class="formbold-form-input" required>
+              <option value="1">GET</option>
+              <option value="2">POST</option>
+              <option value="3">PUT</option>
+              <option value="4">PATCH</option>
+              <option value="5">DELETE</option>
+            </select>
+	        </div>
+	        <div class="mb-0 pt-0">
+	          <div>
+	            <button class="formbold-btn w-full" onclick="addEndpoint()" style="margin-top: 20px;">
+	              Add Endpoint
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
+
+
+            <div class="overlay" id="viewProfile">
+              <div class="popup-container11">
+                <div class="content">
+                  <div class="formbold-main-wrapper">
+                    <div class="formbold-form-wrapper">
+                      <button id="closeButtonProfile" type="button" class="close" aria-hidden="true">&times;</button>
+                      <div class="formbold-mb-5">
+                        <div id="personalStatsEmail" class="email" style="margin-bottom: 20px;">alex@gmail.com</div>
+                        <div class="total">
+                          <p>Total projects</p>
+                          <span id="totalProjectsLabel">5</span>
+                        </div>
+                        <div class="total">
+                          <p>Total endpoints</p>
+                          <span id="totalEndpointsLabel">50</span>
+                        </div>
+                        <div class="total">
+                          <p>Stable endpoints</p>
+                          <span id="endpointsStableLabel" style="color: green;">40</span>
+                        </div>
+                        <div class="total">
+                          <p>Unstable endpoints</p>
+                          <span id="endpointsUnstableLabel" style="color: rgb(152, 152, 0);">5</span>
+                        </div>
+                        <div class="total">
+                          <p>Down endpoints</p>
+                          <span id="endpointsDownLabel" style="color: red;">5</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        -->
+
+  <section class="comments-section">
+    <div class="grey-bg container-fluid p-2" id="dashh">
+      <div class="row">
+          <div class="col-12 mt-0 mb-1">
+              <h4 class="text-uppercase">user administration</h4>
+          </div>
+      </div>
+
+      <p>Profit from all transactions: RON <span id="profitLabel" style="color: rgb(0, 214, 0);">100</span></p>
+
+      <div class="header">
+        <div class="col-sm-6">
+            <h2 class="tabel-titlu">View <b>Users</b></h2>
+        </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table" id="employee_table2">
+            <thead>
+                <tr id="tr">
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Sold</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                </tr>
+                <tr>
+                </tr>
+
+              </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mt-0 mb-1">
+            <h4 class="text-uppercase" style="margin-top: 30px;">Notifications</h4>
+        </div>
+      </div>
+
+      <ul class="comment-list" id="notificationWrapper">
+        <li class="idea" id="notification" >
+            <div class="idea-author-and-buttons">
+                <div class="idea-author">example@example.com</div>
+                <div class="idea-buttons">
+                    <button class="approve-button" id="approveButton_0">Hide</button>
+                </div>
+            </div>
+            <div class="idea-info">
+                <div class="idea-text">Has registered</div>
+                <div class="idea-date">DD/MM/YYYY HH:MM:SS</div>
+            </div>
+        </li>
+    </ul>
+      
+    <ul class="comment-list" id="notificationWrapper">
+      <li class="idea" id="notification" >
+          <div class="idea-author-and-buttons">
+              <div class="idea-author">example@example.com</div>
+              <div class="idea-buttons">
+                  <button class="approve-button" id="approveButton_0">Hide</button>
+              </div>
+          </div>
+          <div class="idea-info">
+              <div class="idea-text">Bought 0.78 BTC </div>
+              <div class="idea-date">DD/MM/YYYY HH:MM:SS</div>
+          </div>
+      </li>
+  </ul>
+
+    </div>
+  </section>
+
+  <!-- STATISTICS SECTION -->
+  <section class="history-section">
+    <div class="grey-bg container-fluid p-2" id="dashh">
+      <section id="minimal-statistics">
+        <div class="row">
+          <div class="col-12 mt-0 mb-1">
+            <h4 class="text-uppercase">journaling</h4>
+          </div>
+        </div>
+  
+       
+      
+      </section>
+      
+    
+  
+  
+    </div>
+  </section>
+
+
+  <div class="navbar-bottom">
+    <ul class="nav-list">
+      <li>
+        <a href="#" class="profile" id="dash-navbar">
+          <i class='bx bx-grid-alt' style="color: white;"></i>
+          <span class="links_name" >Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+     </li>
+
+     <li>
+        <a href="#" class="comments" id="apps-navbar">
+          <i class='bx bx-list-ul' ></i>
+          <span class="links_name">My Applications</span>
+        </a>
+        <span class="tooltip">My Applications</span>
+      </li>
+
+     <li>
+       <a href="#" class="comments" id="comments-navbar">
+         <i class='bx bx-bell' ></i>
+         <span class="links_name">Notifications</span>
+       </a>
+       <span class="tooltip">Notifications</span>
+     </li>
+
+     <li>
+      <a href="#" class="history" id="history-navbar">
+        <i class='bx bx-chart' ></i>
+        <span class="links_name">Statistics</span>
+      </a>
+      <span class="tooltip">Statistics</span>
+    </li>
+
+     <li>
+      <a href="#" class="comments" id="information-navbar">
+        <i class='bx bx-user' ></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
+
+
+
+     <li class="profile">
+      <a href="#" id="log_out_back2">
+         <i class='bx bx-log-out' id="log_out" ></i>
+      </a>
+     </li>
+
+    </ul>
+  </div>
+
+   <!-- REPORT  popup-->
+<div id="reportPopup" class="popup-container10">
+
+	<div class="content">
+	  <div class="formbold-main-wrapper">
+	    <div class="formbold-form-wrapper">
+					<button id="closeButtonReportPopup" type="button" class="close" aria-hidden="true" onclick="cancelReportModal()">&times;</button>
+	            <div class="modal-header2">
+                	<p id="headline">REPORT A BUG</p>
+
+                </div>
+	
+	        <div class="formbold-mb-5">
+	          <label for="description" class="formbold-form-label">
+	            Enter the comment: <span class="required"> *</span>
+	          </label>
+	          <input
+	            name="description"
+	            id="reportMentions"
+	            placeholder="Enter comment"
+	            class="formbold-form-input" required
+	          />
+	        </div>
+	
+	
+	          <div>
+	            <button class="formbold-btn w-full" id="addApplicationBtn" style="margin-top: 20px;" onclick="addReport()">
+	              Report
+	            </button>
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<!--ALEGERE STATISTICS popup-->
+<div id="viewStatisticsChoice" class="popup-container10">
+
+  <div class="content">
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+          <button id="closeButtonStatisticsChoice" type="button" class="close" aria-hidden="true" onclick="cancelEndpointStatisticsModal()">&times;</button>
+              <div class="modal-header2">
+                  <p id="headline">Select how far back you want to view the statistics</p>
+
+                </div>
+
+        
+          <div class="formbold-mb-5">
+            <label for="number" class="formbold-form-label">
+                Enter the number: <span class="required"> *</span>
+            </label>
+            <input
+                type="text"
+                name="url"
+                id="endpointStatisticsHours"
+                placeholder="Enter number"
+                class="formbold-form-input"
+                required
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+        </div>
+        
+  
+          <div class="formbold-mb-5">
+            <label for="description" class="formbold-form-label">
+              Select the unit: <span class="required"> *</span>
+            </label>
+            <select name="description" id="endpointStatisticsUnit" formControlName="description" class="formbold-form-input" required>
+              <option value="1">HOURS</option>
+              <option value="2">DAYS</option>
+            </select>
+          </div>
+    
+  
+          <div class="mb-0 pt-0">
+            <div>
+              <button class="formbold-btn w-full" id="submitStatistics" onclick="showEndpointStatistics()" style="margin-top: 20px;">
+                Submit
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!--STATISTICS popup-->
+      <div id="viewStatistics" class="popup-container10">
+        <div class="content">
+          <div class="formbold-main-wrapper">
+            <div class="formbold-form-wrapper">
+              <button id="closeButtonStatistics" type="button" class="close" aria-hidden="true" onclick="cancelEndpointStatisticsModal()">&times;</button>
+              <div class="formbold-mb-5">
+                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                <button id="downloadButton" class="circle3" style="background: red; font-size: 24px;">
+                  <span class="number"><i class="bx bx-download"></i></span>
+                </button>
+                <div id="endpointStatisticsState" class="stateEndpoint" style="margin-top: 20px; background-color: yellowgreen;">Unstable</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal HTML -->
+<div id="myModal2" class="modal">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="fa fa-times-circle-o" style="font-size: 4.75rem;"></i>
+				</div>						
+				<h4 class="modal-title w-100">Are you sure?</h4>	
+                <button type="button" class="close" id="cancelButtonEnd" aria-hidden="true" onclick="cancelDeleteEndpointModal()">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete this endpoint? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" id="cancelButtonEnd" onclick="cancelDeleteEndpointModal()">Cancel</button>
+				<button type="button" class="btn btn-danger" onclick="onDeleteEndpoint()">Delete</button>
+			</div>
+		</div>
+	</div>
+</div> 
+</body>
+</html>
+
+
+
